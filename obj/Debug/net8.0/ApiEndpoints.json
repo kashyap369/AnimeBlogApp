@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Anime.web.Controllers.BlogPostLikeController",
+    "Method": "AddLike",
+    "RelativePath": "api/BlogPostLike/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "likerq",
+        "Type": "Anime.web.Models.ViewModels.AddLikeRq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Anime.web.Controllers.ImagesController",
+    "Method": "UploadAsync",
+    "RelativePath": "api/Images",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,52 @@
+﻿@model List<Anime.web.Models.Domain.BlogPost>
+@{
+
+}
+
+<div class="container bg-secondary bg-opacity-10 py-2">
+    <h1>List of availbale blogs </h1>
+
+</div>
+<div class="container">
+    @if(Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Heading</th>
+                    <th>Tags</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var blog in Model)
+                {
+                    <tr>
+                        <th>@blog.Id</th>
+                        <th>@blog.Heading</th>
+                        <th>
+                            <div class="d-flex gap-2">
+                                @foreach (var tag in blog.Tags)
+                                {
+                                    <span class="badge gap-2 bg-secondary">
+                                        @tag.Name
+                                    </span>
+                                }
+                            </div>
+                        </th>
+                        <th>
+                            <a asp-action="Edit" asp-controller="AdminBlogPosts" asp-route-id="@blog.Id">Edit</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>no data here</p>
+    }
+
+</div>

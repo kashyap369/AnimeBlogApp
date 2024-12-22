@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signinmanager
+@inject UserManager<IdentityUser> Usermanager
+
+@model Anime.web.Models.ViewModels.BlogDetailViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-6">
+            @if(Model != null)
+            {
+                <h1>@Model.Heading</h1>
+                <div class="d-flex mb-3 justify-content-between">
+                    <span class="text-secondary">@Model.Author</span>
+                    <span class="text-secondary">@Model.PublishedDate</span>
+                </div>
+
+                <div class="mb-3">
+                    @if (signinmanager.IsSignedIn(User))
+                    {
+                        <a id="btnLike" style="cursor:pointer" > <i class="bi bi-hand-thumbs-up"></i> @Model.TotalLikes</a>
+                    }
+                </div>
+
+                <img src="@Model.FeaturedImgUrl" class="d-block img-fluid mb-3" />
+                <div class="mb-3">
+                    @Html.Raw(Model.Content)
+                </div>
+
+            }
+            else
+            {
+                <p>no blog found</p>
+            }
+        </div>
+        </div>
+
+    </div>
+
+@section Script{
+    <script>
+        const btnLikeElement = document.getElementById('btnLike');
+
+        async function addLikeForBlog(){
+            fetch('api/BlogPostLike/Add', {
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Accept':'*/*'
+                },
+                body: JSON.stringify({BlogPostId:'@Model.Id',
+                userId:'@Usermanager.GetUserId(User)'
+                }).then(console.log('Request Finished'));
+            })
+
+        }
+        btnLikeElement.addEventListener('click', addLikeForBlog);
+
+
+    </script>
+
+}

@@ -1,0 +1,64 @@
+﻿@model List<Anime.web.Models.Domain.BlogPost>
+@{
+    ViewData["Title"] = "AnimeZone";
+}
+
+<div class="container col-xxl-8 p-xl-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+       <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                AnimeZone - find your best
+            </h1>
+            <p class="lead">
+                Anime is the zone of art covering vast range of anime genres topic like adventure,action,shonen,bankai
+                etc.Want to read the latest articles join AnimeZone app get weekly blogs in your email
+            </p>
+       </div>
+
+       <div class="col-12 col-lg-6">
+            <img src="https://images.pexels.com/photos/40185/mac-freelancer-macintosh-macbook-40185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt="anime - zone blog" class="d-block mx-lg-auto img-fluid" width="400" />
+       </div>
+       <div class="mb-3">
+
+       </div>  
+        
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            @if(Model !=null && Model.Any())
+            {
+                foreach(var myblogs in Model)
+                {
+                    <div class="mb-5 bg-light box-shadow">
+                        <img class="mb-2 d-block img-fluid" src="@myblogs.FeaturedImgUrl" alt="@myblogs.Heading"  />
+                        <h1 class="mb-2"> @myblogs.Heading </h1>
+                        <p class="mb-1"> @myblogs.Author <br />@myblogs.PublishedDate.ToShortDateString() </p>
+                        <p class="mb-2">@myblogs.ShortDescription</p>
+                        
+
+                        <p class="mb-4">
+                            @foreach(var tags in myblogs.Tags)
+                            {
+                                <span class="badge bg-secondary me-1">@tags.Name</span>
+                            }
+                        </p>
+
+                        <a class="btn btn-dark"
+                            asp-area=""
+                            asp-controller="Blogs"
+                            asp-action="Index"
+                            asp-route-urlHandle="@myblogs.UrlHandle"
+                        
+                        >Read More</a>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+﻿@model Anime.web.Models.ViewModels.LoginVM
+
+<div class="container ">
+    <div class="row d-flex justify-content-center">
+        <form method="post">
+            <div class="mb-3">
+                <h1>Login Now</h1>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input class="form-control " type="text" asp-for="Username" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input class="form-control " type="text" asp-for="Password" />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary " type="submit">
+                    Login
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

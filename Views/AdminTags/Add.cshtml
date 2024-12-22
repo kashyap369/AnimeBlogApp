@@ -1,0 +1,31 @@
+﻿@model Anime.web.Models.ViewModels.AddTagRq
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+    <div class="bg-secondary bg-opacity-10 py-2">
+        <div class="container">
+            <h1>Admin Tag page</h1>
+        </div>
+
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <form method="post" class="col-6 mb-5">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" asp-for="Name" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Display Name</label>
+                <input class="form-control" asp-for="DisplayName" />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit" asp-controller="AdminTags" asp-action="Add" >Save</button>
+            </div>
+        </form>
+
+    </div>
